@@ -1,140 +1,1215 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }} - Home</title>
+    <link rel="icon" href="{{ asset('assets/user/img/heading-img.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/user/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/jquery.fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/user/css/color.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/vendor/DataTables/datatables.min.css') }}">
+</head>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles -->
-        <style>
-            /* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Figtree, sans-serif;font-feature-settings:normal}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::-webkit-backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.relative{position:relative}.mx-auto{margin-left:auto;margin-right:auto}.mx-6{margin-left:1.5rem;margin-right:1.5rem}.ml-4{margin-left:1rem}.mt-16{margin-top:4rem}.mt-6{margin-top:1.5rem}.mt-4{margin-top:1rem}.-mt-px{margin-top:-1px}.mr-1{margin-right:0.25rem}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.h-16{height:4rem}.h-7{height:1.75rem}.h-6{height:1.5rem}.h-5{height:1.25rem}.min-h-screen{min-height:100vh}.w-auto{width:auto}.w-16{width:4rem}.w-7{width:1.75rem}.w-6{width:1.5rem}.w-5{width:1.25rem}.max-w-7xl{max-width:80rem}.shrink-0{flex-shrink:0}.scale-100{--tw-scale-x:1;--tw-scale-y:1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-6{gap:1.5rem}.gap-4{gap:1rem}.self-center{align-self:center}.rounded-lg{border-radius:0.5rem}.rounded-full{border-radius:9999px}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity))}.bg-dots-darker{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E")}.from-gray-700\/50{--tw-gradient-from:rgb(55 65 81 / 0.5);--tw-gradient-to:rgb(55 65 81 / 0);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-transparent{--tw-gradient-to:rgb(0 0 0 / 0);--tw-gradient-stops:var(--tw-gradient-from), transparent, var(--tw-gradient-to)}.bg-center{background-position:center}.stroke-red-500{stroke:#ef4444}.stroke-gray-400{stroke:#9ca3af}.p-6{padding:1.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.text-center{text-align:center}.text-right{text-align:right}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-gray-500\/20{--tw-shadow-color:rgb(107 114 128 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.selection\:bg-red-500 *::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white *::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.selection\:bg-red-500::selection{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity))}.focus\:rounded-sm:focus{border-radius:0.125rem}.focus\:outline:focus{outline-style:solid}.focus\:outline-2:focus{outline-width:2px}.focus\:outline-red-500:focus{outline-color:#ef4444}.group:hover .group-hover\:stroke-gray-600{stroke:#4b5563}.z-10{z-index: 10}@media (prefers-reduced-motion: no-preference){.motion-safe\:hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}}@media (prefers-color-scheme: dark){.dark\:bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity))}.dark\:bg-gray-800\/50{background-color:rgb(31 41 55 / 0.5)}.dark\:bg-red-800\/20{background-color:rgb(153 27 27 / 0.2)}.dark\:bg-dots-lighter{background-image:url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E")}.dark\:bg-gradient-to-bl{background-image:linear-gradient(to bottom left, var(--tw-gradient-stops))}.dark\:stroke-gray-600{stroke:#4b5563}.dark\:text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity))}.dark\:text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.dark\:shadow-none{--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.dark\:ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.dark\:ring-inset{--tw-ring-inset:inset}.dark\:ring-white\/5{--tw-ring-color:rgb(255 255 255 / 0.05)}.dark\:hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}.group:hover .dark\:group-hover\:stroke-gray-400{stroke:#9ca3af}}@media (min-width: 640px){.sm\:fixed{position:fixed}.sm\:top-0{top:0px}.sm\:right-0{right:0px}.sm\:ml-0{margin-left:0px}.sm\:flex{display:flex}.sm\:items-center{align-items:center}.sm\:justify-center{justify-content:center}.sm\:justify-between{justify-content:space-between}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:gap-8{gap:2rem}.lg\:p-8{padding:2rem}}
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
-                        <path d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z" fill="#FF2D20"/>
-                    </svg>
-                </div>
-
-                <div class="mt-16">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        <a href="https://laravel.com/docs" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+<body>
+    <div class="preloader">
+        <div class="loader-6">
+            <div class="set-one">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div class="set-two">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-slid">
+                    <div>
+                        <div class="phone-data">
+                            <div class="phone d-flax align-items-center">
+                                <i>
+                                    <svg height="112" viewBox="0 0 24 24" width="112"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-rule="evenodd" fill="rgb(255255,255)" fill-rule="evenodd">
+                                            <path
+                                                d="m7 2.75c-.41421 0-.75.33579-.75.75v17c0 .4142.33579.75.75.75h10c.4142 0 .75-.3358.75-.75v-17c0-.41421-.3358-.75-.75-.75zm-2.25.75c0-1.24264 1.00736-2.25 2.25-2.25h10c1.2426 0 2.25 1.00736 2.25 2.25v17c0 1.2426-1.0074 2.25-2.25 2.25h-10c-1.24264 0-2.25-1.0074-2.25-2.25z">
+                                            </path>
+                                            <path
+                                                d="m10.25 5c0-.41421.3358-.75.75-.75h2c.4142 0 .75.33579.75.75s-.3358.75-.75.75h-2c-.4142 0-.75-.33579-.75-.75z">
+                                            </path>
+                                            <path
+                                                d="m9.25 19c0-.4142.33579-.75.75-.75h4c.4142 0 .75.3358.75.75s-.3358.75-.75.75h-4c-.41421 0-.75-.3358-.75-.75z">
+                                            </path>
+                                        </g>
                                     </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Documentation</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
-                                </p>
+                                </i>
+                                <span>Phone:</span><a class="me-3" href="callto:800-836-4620">800-836-4620</a>
                             </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <a href="https://laracasts.com" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+                            <div class="phone">
+                                <i>
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                                        style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                        <path
+                                            d="M0,81v350h512V81H0z M456.952,111L256,286.104L55.047,111H456.952z M30,128.967l134.031,116.789L30,379.787V128.967z M51.213,401l135.489-135.489L256,325.896l69.298-60.384L460.787,401H51.213z M482,379.788L347.969,245.756L482,128.967V379.788z">
+                                        </path>
                                     </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laracasts</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <a href="https://laravel-news.com" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Laravel News</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </p>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                            </svg>
-                        </a>
-
-                        <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</h2>
-
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Forge</a>, <a href="https://vapor.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Vapor</a>, <a href="https://nova.laravel.com" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Nova</a>, and <a href="https://envoyer.io" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Telescope</a>, and more.
-                                </p>
+                                </i>
+                                <span>Email:</span><a href="mallto:information@domain.com">information@domain.com</a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
-                        <div class="flex items-center gap-4">
-                            <a href="https://github.com/sponsors/taylorotwell" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="-mt-px mr-1 w-5 h-5 stroke-gray-400 dark:stroke-gray-600 group-hover:stroke-gray-600 dark:group-hover:stroke-gray-400">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                                </svg>
-                                Sponsor
-                            </a>
+                    <div>
+                        <div class="time">
+                            <div class="login d-flex align-items-center">
+                                <i class="fa-solid fa-clock"></i>
+                                <p>Monday to Saturday:<b>8.00 AM - 05.00 PM</b></p>
+                            </div>
+                            @auth
+                                <div class="login">
+                                    <i class="fa-solid fa-user"></i>
+                                    <a href="{{ route('home') }}">Home</a>
+                                </div>
+                            @else
+                                <div class="login">
+                                    <i class="fa-solid fa-user"></i>
+                                    <a href="{{ route('login') }}">Login</a>
+                                </div>
+                            @endauth
                         </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        <div class="container">
+            <div class="bottom-bar">
+                <a href="{{ route('welcome') }}">
+                    <img src="{{ asset('assets/user/img/logo-b.png') }}" alt="logo">
+                </a>
+                <nav class="navbar">
+                    <ul class="navbar-links">
+                        <li class="navbar-dropdown has-children">
+                            <a href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="navbar-dropdown">
+                            <a href="about.html">Check Laundry</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="pickup">
+                    <div class="extras">
+                        <a href="javascript:void(0)" id="show">
+                            <svg enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="m128 102.4c0-14.138 11.462-25.6 25.6-25.6h332.8c14.138 0 25.6 11.462 25.6 25.6s-11.462 25.6-25.6 25.6h-332.8c-14.138 0-25.6-11.463-25.6-25.6zm358.4 128h-460.8c-14.138 0-25.6 11.463-25.6 25.6 0 14.138 11.462 25.6 25.6 25.6h460.8c14.138 0 25.6-11.462 25.6-25.6 0-14.137-11.462-25.6-25.6-25.6zm0 153.6h-230.4c-14.137 0-25.6 11.462-25.6 25.6 0 14.137 11.463 25.6 25.6 25.6h230.4c14.138 0 25.6-11.463 25.6-25.6 0-14.138-11.462-25.6-25.6-25.6z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="javascript:void(0)" class="lightbox-toggle sec-btn">Schedule a Pickup</a>
+                </div>
+                <div class="bar-menu">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-nav hmburger-menu" id="mobile-nav" style="display:block;">
+            <div class="res-log">
+                <a href="index.html">
+                    <img src="{{ asset('assets/user/img/logo.png') }}" alt="Responsive Logo">
+                </a>
+            </div>
+            <ul>
+                <li class="menu-item-has-children"><a href="JavaScript:void(0)">Home</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="index.html">home 1</a>
+                        </li>
+                        <li>
+                            <a href="index-2.html">home 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="about.html">about</a>
+                </li>
+                <li class="menu-item-has-children"><a href="JavaScript:void(0)">Services</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="services.html">Services</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('services-detail') }}">services details</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children"><a href="JavaScript:void(0)">pages</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="team-details.html">team details</a>
+                        </li>
+                        <li>
+                            <a href="pricing-plan.html">pricing plan</a>
+                        </li>
+                        <li>
+                            <a href="faq.html">faq</a>
+                        </li>
+                        <li>
+                            <a href="404-error.html">404 error</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children"><a href="JavaScript:void(0)">News</a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="our-blog.html">our blog</a>
+                        </li>
+                        <li>
+                            <a href="blog-details.html">blog details</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="contact.html">contacts</a>
+                </li>
+            </ul>
+            <a href="JavaScript:void(0)" id="res-cross"></a>
+            <ul class="social-media">
+                <li>
+                    <a href="#" class="f">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="t">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="in">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <section class="hero-section">
+        <div class="container-full">
+            <div class="row align-items-center slider-home-1 owl-carousel owl-theme">
+                <div class="col-lg-12 item">
+                    <div class="row align-items-center">
+                        <div class="offset-lg-1 col-lg-6">
+                            <div class="hero-text">
+                                <h1>Dry Cleaning & Laundry Experts</h1>
+                                <h4>Dry cleaning and laundry service, made to make life fresher</h4>
+                                <div class="d-md-flex">
+                                    <a href="#" class="sec-btn">Order Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="hero-img">
+                                <img src="{{ asset('assets/user/img/hero-img-1.jpg') }}" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 item">
+                    <div class="row align-items-center">
+                        <div class="offset-lg-1 col-lg-6">
+                            <div class="hero-text">
+                                <h1>Dry Cleaning & Experts Service</h1>
+                                <h4>Dry cleaning and laundry service, made to make life fresher</h4>
+                                <div class="d-md-flex">
+                                    <a href="#" class="sec-btn">Order Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="hero-img">
+                                <img src="{{ asset('assets/user/img/hero-img-2.jpg') }}" alt="img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="heroshaps-1"></div>
+        <div class="heroshaps-2"></div>
+    </section>
+    <section class="gap">
+        <div class="container">
+            <div class="heading">
+                <img src="{{ asset('assets/user/img/heading-img.png') }}" alt="heading-img">
+                <p>Welcome to the Dry Cleaning Company</p>
+                <h2>Professional Cleaning Services for Home and Office</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="professional-img">
+                        <img alt="img" src="{{ asset('assets/user/img/professional.jpg') }}">
+                        <div class="professional-phon">
+                            <img alt="img" src="{{ asset('assets/user/img/phon-icon.png') }}">
+                            <span>Emergency? Call Us Now :</span>
+                            <a href="callto:+1234567890">+123 4567 890</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="professional">
+                        <p>Our home cleaning services are designed to give you the peace of mind you deserve and the
+                            time you need to enjoy your life and love give you the peace of mind you deserve and the
+                            time you need to enjoy your life and love home cleaning services.</p>
+                        <ul class="list-style">
+                            <li>
+                                <div class="bol"></div>One-off, weekly or fortnightly visits
+                            </li>
+                            <li>
+                                <div class="bol"></div>Vetted & background-checked cleaners
+                            </li>
+                            <li>
+                                <div class="bol"></div>Keep the same cleaner for every visit
+                            </li>
+                            <li>
+                                <div class="bol"></div>Book, manage & pay online
+                            </li>
+                        </ul>
+                        <div class="d-sm-flex align-items-center">
+                            <div class="d-flex align-items-center">
+                                <h4>14<sup>+</sup></h4>
+                                <h6>years of experience</h6>
+                            </div>
+                            <div class="d-flex align-items-center company-director">
+                                <img src="{{ asset('assets/user/img/man.jpg') }}" alt="img">
+                                <div>
+                                    <span>Company Director</span>
+                                    <h6>Thomas Walkar</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="gap no-top">
+        <div class="container">
+            <div class="heading two">
+                <p>Dryclean Services</p>
+                <h2>We Collect, Clean Laundry & Dry Cleaning.</h2>
+            </div>
+            <div class="row service-slider owl-carousel owl-theme">
+                <div class="item">
+                    <div class="service">
+                        <img src="{{ asset('assets/user/img/service-1.jpg') }}" alt="service-img">
+                        <div class="service-text">
+                            <i><img src="{{ asset('assets/user/img/service-icon-1.png') }}" alt="service-icon"></i>
+                            <div class="service-data">
+                                <a href="{{ route('services-detail') }}">
+                                    <h4>Wash & Fold Laundry Service</h4>
+                                </a>
+                                <p>Lorem ipsum dolor sit amet cons ectetur adipisicing elit, sed do ei m dolousmod</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="service">
+                        <img src="{{ asset('assets/user/img/service-2.jpg') }}" alt="service-img">
+                        <div class="service-text">
+                            <i><img src="{{ asset('assets/user/img/service-icon-2.png') }}" alt="service-icon"></i>
+                            <div class="service-data">
+                                <a href="{{ route('services-detail') }}">
+                                    <h4>Alternations and Repairs</h4>
+                                </a>
+                                <p>Lorem ipsum dolor sit amet cons ectetur adipisicing elit, sed do ei m dolousmod</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="service">
+                        <img src="{{ asset('assets/user/img/service-3.jpg') }}" alt="service-img">
+                        <div class="service-text">
+                            <i><img src="{{ asset('assets/user/img/service-icon-3.png') }}" alt="service-icon"></i>
+                            <div class="service-data">
+                                <a href="{{ route('services-detail') }}">
+                                    <h4>Wedding Gowns Drycleaning</h4>
+                                </a>
+                                <p>Lorem ipsum dolor sit amet cons ectetur adipisicing elit, sed do ei m dolousmod</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="service">
+                        <img src="{{ asset('assets/user/img/service-4.jpg') }}" alt="service-img">
+                        <div class="service-text">
+                            <i><img src="{{ asset('assets/user/img/service-icon-5.png') }}" alt="service-icon"></i>
+                            <div class="service-data">
+                                <a href="#">
+                                    <h4>Commercial Laundry Service</h4>
+                                </a>
+                                <p>Lorem ipsum dolor sit amet cons ectetur adipisicing elit, sed do ei m dolousmod</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="refer-friend" style="background-image: url(assets/user/img/balloon.jpg);">
+            <img src="{{ asset('assets/user/img/balloon-girl.png') }}" alt="balloon-girl">
+            <img alt="babal" src="{{ asset('assets/user/img/babal.png') }}" class="babal">
+            <div>
+                <h2>Refer a Friend <span>Get 15% off</span> Your Next Order.</h2>
+                <h5>The discount applies when the referred friend has placed an order</h5>
+                <a href="#" class="sec-btn">Refer a Friend</a>
+            </div>
+        </div>
+    </div>
+    <section class="works-section" style="background-image: url(assets/user/img/works-section.jpg);">
+        <div class="container">
+            <div class="heading">
+                <img src="{{ asset('assets/user/img/heading-img.png') }}" alt="heading-img">
+                <p>Follow A Few Easy Steps</p>
+                <h2>How it Works</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-stap">
+                        <div class="work-stap-img">
+                            <i><img alt="img" src="{{ asset('assets/user/img/works-icon-1.png') }}"></i>
+                            <span>1</span>
+                        </div>
+                        <h3>Book A Pickup</h3>
+                        <p>Choose when and where you wish us to collect & deliver your laundry.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-stap two">
+                        <div class="work-stap-img">
+                            <i><img alt="img" src="{{ asset('assets/user/img/works-icon-2.png') }}"></i>
+                            <span>2</span>
+                        </div>
+                        <h3>We Collect</h3>
+                        <p>Our team collects your clothes from your doorstep. </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-stap">
+                        <div class="work-stap-img">
+                            <i><img alt="img" src="{{ asset('assets/user/img/works-icon-3.png') }}"></i>
+                            <span>3</span>
+                        </div>
+                        <h3>Expert Processing</h3>
+                        <p>Choose when and where you wish us to collect & deliver your laundry.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="work-stap two mb-0">
+                        <div class="work-stap-img">
+                            <i><img alt="img" src="{{ asset('assets/user/img/works-icon-4.png') }}"></i>
+                            <span>4</span>
+                        </div>
+                        <h3>We Deliver</h3>
+                        <p>We bring back your freshly cleaned and rejuvenated clothes</p>
+                    </div>
+                </div>
+                <div class="btn-center">
+                    <a href="javascript:void(0)" class="sec-btn lightbox-toggle">Schedule a Pickup</a>
+                </div>
+            </div>
+            <img src="{{ asset('assets/user/img/line.png') }}" class="works-line" alt="line"
+                data-aos="fade-right" data-aos-delay="700" data-aos-duration="1500">
+        </div>
+        </div>
+    </section>
+    <section class="gap">
+        <div class="container">
+            <div class="new-laundry">
+                <div>
+                    <div class="heading two">
+                        <p>New Laundry Service Near You</p>
+                        <h3>A Gentle Solution for The Environment, and For Your Wallet</h3>
+                    </div>
+                    <form class="city-zip">
+                        <label>24-hour self-serve automated laundry service - open round the clock!</label>
+                        <div class="d-sm-flex">
+                            <input placeholder="City and Zip Code" type="text" name="City and Zip Code">
+                            <button class="sec-btn">find</button>
+                        </div>
+                    </form>
+                    <div class="d-flex align-items-center">
+                        <img src="{{ asset('assets/user/img/chake.png') }}" alt="img">
+                        <h6>Highest quality and lowest price guaranteed.</h6>
+                    </div>
+                </div>
+                <div class="new-laundry-img">
+                    <img alt="img" src="{{ asset('assets/user/img/new-laundry.jpg') }}">
+                    <a data-fancybox="" href="https://www.youtube.com/watch?v=xKxrkht7CpY">
+                        <i>
+                            <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 8.49951L0.5 0.27227L0.5 16.7268L11 8.49951Z" fill="white"></path>
+                            </svg>
+                        </i>
+                    </a>
+                </div>
+            </div>
+            <div class="count-style">
+                <div class="count-text">
+                    <div class="d-flex justify-content-center">
+                        <h2 class="count" data-number="12"></h2>
+                        <span>M</span>
+                    </div>
+                    <h3 class="text">Garments laundered last year</h3>
+                </div>
+                <div class="boder"></div>
+                <div class="count-text">
+                    <div class="d-flex justify-content-center">
+                        <h2 class="count" data-number="850"></h2>
+                        <span>K</span>
+                    </div>
+                    <h3 class="text">Garments in circulation</h3>
+                </div>
+                <div class="boder"></div>
+                <div class="count-text mb-0">
+                    <div class="d-flex justify-content-center">
+                        <h2 class="count" data-number="99"></h2>
+                        <span>%</span>
+                    </div>
+                    <h3 class="text">Customer satisfaction with products</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="price-package gap" style="background-image:url(assets/user/img/price-package.png)">
+        <div class="container">
+            <div class="heading">
+                <img src="{{ asset('assets/user/img/heading-img.png') }}" alt="heading-img">
+                <p>What we offer</p>
+                <h2>Price Packages</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table align-middle table-row-dashed fs-6 gy-5" id="paket-table">
+                                <thead>
+                                    <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+                                        <th>Nama Paket</th>
+                                        <th>Harga</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="fw-semibold text-gray-600">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container-fluid">
+        <div class="offset-lg-1 col-lg-11">
+            <div class="dryclean refer-friend" style="background-image:url(assets/user/img/balloon-1.jpg)">
+                <div>
+                    <div class="heading two">
+                        <p>landry and dryclean application</p>
+                        <h2 class="pb-0">Laundry Service For Your Business!</h2>
+                    </div>
+                    <ul class="list-style">
+                        <li>
+                            <div class="bol"></div>A professional laundry and dry cleaners
+                        </li>
+                        <li>
+                            <div class="bol"></div>High-tech, high-touch dry cleaning service
+                        </li>
+                        <li>
+                            <div class="bol"></div>Exclusive offers & discounts
+                        </li>
+                    </ul>
+                    <div class="d-flex position-relative">
+                        <a href="#" class="pe-3">
+                            <img class="google-play" src="{{ asset('assets/user/img/google-play.png') }}"
+                                alt="google-play">
+                        </a>
+                        <a href="#">
+                            <img class="google-play" src="{{ asset('assets/user/img/apple.png') }}"
+                                alt="google-play">
+                        </a>
+                    </div>
+                </div>
+                <div class="refer-friend-img position-relative">
+                    <img src="{{ asset('assets/user/img/bus.png') }}" alt="bus">
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="gap">
+        <div class="container">
+            <div class="heading">
+                <img src="{{ asset('assets/user/img/heading-img.png') }}" alt="heading-img">
+                <p>Blog a & News</p>
+                <h2>Recent Articles</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-data">
+                        <div class="blog-img position-relative">
+                            <figure>
+                                <img src="{{ asset('assets/user/img/blog-1.jpg') }}" alt="blog">
+                            </figure>
+                            <div class="data">
+                                <h4>December 15, 2023</h4>
+                                <a href="#"><img src="{{ asset('assets/user/img/camment.png') }}"
+                                        alt="camment">14</a>
+                            </div>
+                        </div>
+                        <a href="blog-details.html">
+                            <h3>What Kind of Fabrics Really Need Dry Cleaning</h3>
+                        </a>
+                        <p>Stanard dummy text ever snce the aem Ipsumf. the printingand ypese inghas bemmyen the supim.
+                            Stanard dummy text ever snce.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-data">
+                        <div class="blog-img position-relative">
+                            <figure>
+                                <img src="{{ asset('assets/user/img/blog-2.jpg') }}" alt="blog">
+                            </figure>
+                            <div class="data">
+                                <h4>December 15, 2023</h4>
+                                <a href="#"><img src="{{ asset('assets/user/img/camment.png') }}"
+                                        alt="camment">14</a>
+                            </div>
+                        </div>
+                        <a href="blog-details.html">
+                            <h3>Wash Your Workwear To Make Them Last Longer?</h3>
+                        </a>
+                        <p>Stanard dummy text ever snce the aem Ipsumf. the printingand ypese inghas bemmyen the supim.
+                            Stanard dummy text ever snce.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-data mb-0">
+                        <div class="blog-img position-relative">
+                            <figure>
+                                <img src="{{ asset('assets/user/img/blog-3.jpg') }}" alt="blog">
+                            </figure>
+                            <div class="data">
+                                <h4>December 15, 2023</h4>
+                                <a href="#"><img src="{{ asset('assets/user/img/camment.png') }}"
+                                        alt="camment">14</a>
+                            </div>
+                        </div>
+                        <a href="blog-details.html">
+                            <h3>Clothes Will Be Collected, Cleaned And Delivered</h3>
+                        </a>
+                        <p>Stanard dummy text ever snce the aem Ipsumf. the printingand ypese inghas bemmyen the supim.
+                            Stanard dummy text ever snce.</p>
+                    </div>
+                </div>
+                <div class="btn-center">
+                    <a href="our-blog.html" class="sec-btn">View All News</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="heading">
+                <p>Client’s Review</p>
+                <h2 class="pb-0">What Our Client’s Say?</h2>
+                <div class="star-rating">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-star"></i>
+                        </li>
+                    </ul>
+                    <h6>5 Star Rating</h6>
+                </div>
+            </div>
+            <div class="slider-wrapper">
+                <div class="slider-nav">
+                    <div class="slider-nav__item">
+                        <img alt="img" src="{{ asset('assets/user/img/client-img-1.jpg') }}">
+                    </div>
+                    <div class="slider-nav__item">
+                        <img alt="img" src="{{ asset('assets/user/img/client-img-2.jpg') }}">
+                    </div>
+                    <div class="slider-nav__item">
+                        <img alt="img" src="{{ asset('assets/user/img/client-img-3.jpg') }}">
+                    </div>
+                    <div class="slider-nav__item">
+                        <img alt="img" src="{{ asset('assets/user/img/client-img-4.jpg') }}">
+                    </div>
+                    <div class="slider-nav__item">
+                        <img alt="img" src="{{ asset('assets/user/img/client-img-5.jpg') }}">
+                    </div>
+                </div>
+                <div class="slider-for testimonials">
+                    <div class="slider-for__item ex1 client">
+                        <h5>“ They always come one time, very easy to place your order any time in the day , very
+                            trusted company.The best dry clean company ever, I would recommend digital dry clean for
+                            everyone. ”</h5>
+                        <h3>Thomas Willimes</h3>
+                        <div class="star-rating">
+                            <ul>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slider-for__item ex1 client">
+                        <h5>“ The best dry clean company ever, they always come one time, very easy to place your order
+                            any time in the day , very trusted company. I would recommend digital dry clean for
+                            everyone. ”</h5>
+                        <h3>Thomas Willimes</h3>
+                        <div class="star-rating">
+                            <ul>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slider-for__item ex1 client">
+                        <h5>“ They always come one time, very easy to place your order any time in the day , very
+                            trusted company.The best dry clean company ever, I would recommend digital dry clean for
+                            everyone. ”</h5>
+                        <h3>Thomas Willimes</h3>
+                        <div class="star-rating">
+                            <ul>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slider-for__item ex1 client">
+                        <h5>“ The best dry clean company ever, they always come one time, very easy to place your order
+                            any time in the day , very trusted company. I would recommend digital dry clean for
+                            everyone. ”</h5>
+                        <h3>Thomas Willimes</h3>
+                        <div class="star-rating">
+                            <ul>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slider-for__item ex1 client">
+                        <h5>“ They always come one time, very easy to place your order any time in the day , very
+                            trusted company.The best dry clean company ever, I would recommend digital dry clean for
+                            everyone. ”</h5>
+                        <h3>Thomas Willimes</h3>
+                        <div class="star-rating">
+                            <ul>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clients-logo gap">
+        <div class="container">
+            <div class="logodata owl-carousel owl-theme">
+                <div class="partner item">
+                    <img alt="clients-logo" src="{{ asset('assets/user/img/client-1.png') }}">
+                </div>
+                <div class="partner item">
+                    <img alt="clients-logo" src="{{ asset('assets/user/img/client-2.png') }}">
+                </div>
+                <div class="partner item">
+                    <img alt="clients-logo" src="{{ asset('assets/user/img/client-3.png') }}">
+                </div>
+                <div class="partner item">
+                    <img alt="clients-logo" src="{{ asset('assets/user/img/client-4.png') }}">
+                </div>
+                <div class="partner item">
+                    <img alt="clients-logo" src="{{ asset('assets/user/img/client-5.png') }}">
+                </div>
+                <div class="partner item">
+                    <img alt="clients-logo" src="{{ asset('assets/user/img/client-6.png') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="gap no-bottom" style="background-image:url(assets/user/img/footer.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="logo">
+                        <a href="#">
+                            <img alt="img" src="{{ asset('assets/user/img/logo.png') }}">
+                        </a>
+                        <p>Stanard dummy text ever snce the a Ipsumf. the printingand ypese inghas mmyen the supi
+                            Stanard dummy text ever snce the a Ipsumf.</p>
+                        <div class="star-rating">
+                            <ul>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-star"></i>
+                                </li>
+                            </ul>
+                            <h4>#1 Customer-Rated</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="widget-title">
+                        <h3>Contact Info</h3>
+                        <div class="boder"></div>
+                        <div class="get-in-touch">
+                            <i>
+                                <svg height="112" viewBox="0 0 24 24" width="112"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-rule="evenodd" fill="rgb(255255,255)" fill-rule="evenodd">
+                                        <path
+                                            d="m7 2.75c-.41421 0-.75.33579-.75.75v17c0 .4142.33579.75.75.75h10c.4142 0 .75-.3358.75-.75v-17c0-.41421-.3358-.75-.75-.75zm-2.25.75c0-1.24264 1.00736-2.25 2.25-2.25h10c1.2426 0 2.25 1.00736 2.25 2.25v17c0 1.2426-1.0074 2.25-2.25 2.25h-10c-1.24264 0-2.25-1.0074-2.25-2.25z">
+                                        </path>
+                                        <path
+                                            d="m10.25 5c0-.41421.3358-.75.75-.75h2c.4142 0 .75.33579.75.75s-.3358.75-.75.75h-2c-.4142 0-.75-.33579-.75-.75z">
+                                        </path>
+                                        <path
+                                            d="m9.25 19c0-.4142.33579-.75.75-.75h4c.4142 0 .75.3358.75.75s-.3358.75-.75.75h-4c-.41421 0-.75-.3358-.75-.75z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </i>
+                            <div>
+                                <span>Phone No:</span>
+                                <h6><a href="callto:+09(0)2076897888">+09 (0) 207 689 7888</a></h6>
+                            </div>
+                        </div>
+                        <div class="get-in-touch">
+                            <i>
+                                <svg width="60" height="40" viewBox="0 0 22 18"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M15.8649 18H6.13513C2.58377 18 0.540527 15.9568 0.540527 12.4054V5.5946C0.540527 2.04324 2.58377 0 6.13513 0H15.8649C19.4162 0 21.4595 2.04324 21.4595 5.5946V12.4054C21.4595 15.9568 19.4162 18 15.8649 18ZM6.13513 1.45946C3.35242 1.45946 1.99999 2.81189 1.99999 5.5946V12.4054C1.99999 15.1881 3.35242 16.5406 6.13513 16.5406H15.8649C18.6476 16.5406 20 15.1881 20 12.4054V5.5946C20 2.81189 18.6476 1.45946 15.8649 1.45946H6.13513Z">
+                                    </path>
+                                    <path
+                                        d="M10.9988 9.8465C10.1815 9.8465 9.35452 9.59352 8.72208 9.07785L5.67668 6.64539C5.36532 6.39241 5.30696 5.93511 5.55992 5.62376C5.8129 5.31241 6.2702 5.25403 6.58155 5.50701L9.62695 7.93947C10.3664 8.53298 11.6215 8.53298 12.361 7.93947L15.4064 5.50701C15.7178 5.25403 16.1848 5.30268 16.428 5.62376C16.681 5.93511 16.6324 6.40214 16.3113 6.64539L13.2659 9.07785C12.6432 9.59352 11.8161 9.8465 10.9988 9.8465Z">
+                                    </path>
+                                </svg>
+                            </i>
+                            <div>
+                                <span>Email Address:</span>
+                                <h6><a href="mailto:Domainname@company.com">Domainname@company.com</a></h6>
+                            </div>
+                        </div>
+                        <div class="get-in-touch">
+                            <i>
+                                <svg version="1.1" xml:space="preserve" width="682.66669" height="682.66669"
+                                    viewBox="0 0 682.66669 682.66669" xmlns="http://www.w3.org/2000/svg">
+                                    <clipPath clipPathUnits="userSpaceOnUse">
+                                        <path d="M 0,512 H 512 V 0 H 0 Z"></path>
+                                    </clipPath>
+                                    <g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)">
+                                        <g>
+                                            <g clip-path="url(#clipPath2333)">
+                                                <g transform="translate(256,92)">
+                                                    <path
+                                                        d="m 0,0 c -126.964,143.662 -160,165.23 -160,240 0,88.366 71.634,160 160,160 88.365,0 160,-71.634 160,-160 C 160,165.854 130.212,147.337 0,0 Z"
+                                                        style="fill:none;stroke:#fff;stroke-width:40;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1">
+                                                    </path>
+                                                </g>
+                                                <g transform="translate(316,372)">
+                                                    <path d="m 0,0 -80,-80 -40,40"
+                                                        style="fill:none;stroke:#fff;stroke-width:40;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1">
+                                                    </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </i>
+                            <div>
+                                <span class="pt-2 pb-0">5604 Willow Crossing Ct, Clifton, United State</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="widget-title">
+                        <h3>Our Services</h3>
+                        <div class="boder"></div>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">Maid Services</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">About Company</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">Window
+                                    Cleaning</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">Advice & Tips</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">Office
+                                    Cleaning</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">Our Team</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">Domestic
+                                    Cleaning</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">Our Partners</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="javascript:void(0)">Drycleaning
+                                    services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="image-gallery">
+                <li>
+                    <a href="{{ asset('assets/user/img/gallery-1.jpg') }}" data-fancybox="gallery">
+                        <figure><img alt="girl" src="{{ asset('assets/user/img/gallery-1.jpg') }}"></figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ asset('assets/user/img/gallery-2.jpg') }}" data-fancybox="gallery">
+                        <figure><img alt="girl" src="{{ asset('assets/user/img/gallery-2.jpg') }}"></figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ asset('assets/user/img/gallery-3.jpg') }}" data-fancybox="gallery">
+                        <figure><img alt="girl" src="{{ asset('assets/user/img/gallery-3.jpg') }}"></figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ asset('assets/user/img/gallery-4.jpg') }}" data-fancybox="gallery">
+                        <figure><img alt="girl" src="{{ asset('assets/user/img/gallery-4.jpg') }}"></figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ asset('assets/user/img/gallery-5.jpg') }}" data-fancybox="gallery">
+                        <figure><img alt="girl" src="{{ asset('assets/user/img/gallery-5.jpg') }}"></figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ asset('assets/user/img/gallery-6.jpg') }}" data-fancybox="gallery">
+                        <figure><img alt="girl" src="{{ asset('assets/user/img/gallery-6.jpg') }}"></figure>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-bootom-bar position-relative">
+            <div class="container">
+                <div class="d-lg-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <h3>Subscribe Newsletter</h3>
+                    </div>
+                    <form>
+                        <input type="text" name="email" placeholder="Enter your email address...">
+                        <button class="sec-btn"><span>Subscribe</span></button>
+                    </form>
+                </div>
+                <div class="copyright">
+                    <p><b>Cleanio</b> - Copyright 2023. Design by <b>Wellconcept.</b></p>
+                    <ul class="social-media">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="fab fa-facebook-f icon"></i>facebook</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="fab fa-twitter icon"></i>twitter</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="fa-brands fa-linkedin-in"></i>linkedin</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="lightbox" class="lightbox clearfix">
+        <div class="white_content">
+            <a href="javascript:;" class="textright" id="close">
+                <i class="fa-regular fa-circle-xmark"></i>
+            </a>
+            <h1>Dry Cleaning & Laundry Experts</h1>
+            <h4 class="des">Dry cleaning and laundry service, made to make life fresher</h4>
+            <figure>
+                <img src="{{ asset('assets/user/img/desktop-menu-img.jpg') }}" alt="Desktop Menu Image">
+            </figure>
+            <h3>Get in touch</h3>
+            <p class="num"><i>
+                    <svg height="112" viewBox="0 0 24 24" width="112" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-rule="evenodd" fill="rgb(255255,255)" fill-rule="evenodd">
+                            <path
+                                d="m7 2.75c-.41421 0-.75.33579-.75.75v17c0 .4142.33579.75.75.75h10c.4142 0 .75-.3358.75-.75v-17c0-.41421-.3358-.75-.75-.75zm-2.25.75c0-1.24264 1.00736-2.25 2.25-2.25h10c1.2426 0 2.25 1.00736 2.25 2.25v17c0 1.2426-1.0074 2.25-2.25 2.25h-10c-1.24264 0-2.25-1.0074-2.25-2.25z">
+                            </path>
+                            <path
+                                d="m10.25 5c0-.41421.3358-.75.75-.75h2c.4142 0 .75.33579.75.75s-.3358.75-.75.75h-2c-.4142 0-.75-.33579-.75-.75z">
+                            </path>
+                            <path
+                                d="m9.25 19c0-.4142.33579-.75.75-.75h4c.4142 0 .75.3358.75.75s-.3358.75-.75.75h-4c-.41421 0-.75-.3358-.75-.75z">
+                            </path>
+                        </g>
+                    </svg>
+                </i>
+                <a href="callto:(+380)503184707">(+380) 50 318 47 07
+            </p>
+            <p class="num"><i>
+                    <svg version="1.1" xml:space="preserve" width="682.66669" height="682.66669"
+                        viewBox="0 0 682.66669 682.66669" xmlns="http://www.w3.org/2000/svg">
+                        <clipPath clipPathUnits="userSpaceOnUse">
+                            <path d="M 0,512 H 512 V 0 H 0 Z"></path>
+                        </clipPath>
+                        <g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)">
+                            <g>
+                                <g clip-path="url(#clipPath2333)">
+                                    <g transform="translate(256,92)">
+                                        <path
+                                            d="m 0,0 c -126.964,143.662 -160,165.23 -160,240 0,88.366 71.634,160 160,160 88.365,0 160,-71.634 160,-160 C 160,165.854 130.212,147.337 0,0 Z"
+                                            style="fill:none;stroke:#8cc63f;stroke-width:40;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1">
+                                        </path>
+                                    </g>
+                                    <g transform="translate(316,372)">
+                                        <path d="m 0,0 -80,-80 -40,40"
+                                            style="fill:none;stroke:#8cc63f;stroke-width:40;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1">
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </i>65 Allerton Street 901 N Pitt Str, Suite 170, VA 22314, USA</p>
+            <div class="social-medias">
+                <a href="javascript:void(0)">Facebook</a>
+                <a href="javascript:void(0)">Twitter</a>
+                <a href="javascript:void(0)">Linkedin</a>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="flex-img">
+            <div class="form-box">
+                <div class="comment">
+                    <h2>Schedule a Pickup</h2>
+                    <div class="boder-bar"></div>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input placeholder="Pick-Up Date" type="text" onfocus="(this.type = 'date')"
+                                id="date">
+                        </div>
+                        <div class="col-lg-6">
+                            <input placeholder="Delivery Date" type="text" onfocus="(this.type = 'date')"
+                                id="date">
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" name="Full Name" placeholder="Full Name">
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" name="Full Name" placeholder="email address">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" name="Full Name" placeholder="Phone No">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" name="Address" placeholder="Address">
+                        </div>
+                        <div class="col-lg-12">
+                            <select class="nice-select Advice">
+                                <option>Services</option>
+                                <option>Services 1</option>
+                                <option>Services 2</option>
+                                <option>Services 3</option>
+                                <option>Services 4</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12">
+                            <textarea placeholder="Comment"></textarea>
+                        </div>
+                        <a href="#" class="sec-btn">Book Order</a>
+                    </div>
+                </form>
+            </div>
+            <img src="{{ asset('assets/user/img/box.jpg') }}" alt="box">
+        </div>
+        <div class="close">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    </div>
+    <div id="progress">
+        <span id="progress-value">
+            <i class="fa-solid fa-arrow-up"></i>
+        </span>
+    </div>
+    <script src="{{ asset('assets/user/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/user/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/user/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/user/js/slick.min.js') }}"></script>
+    <script src="{{ asset('assets/user/js/aos.js') }}"></script>
+    <script src="{{ asset('assets/user/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('assets/user/js/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('assets/user/js/aos-data.js') }}"></script>
+    <script src="{{ asset('assets/user/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/DataTables/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var datatable;
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            datatable = $('#paket-table').DataTable({
+                processing: true,
+                order: [
+                    [0, 'asc']
+                ],
+                ajax: {
+                    type: "POST",
+                    url: "/datatable-paket",
+                },
+                columns: [{
+                        name: 'nama_paket',
+                        data: 'nama_paket',
+                    },
+                    {
+                        name: 'harga',
+                        data: 'harga',
+                    },
+                ],
+            });
+        });
+    </script>
+</body>
