@@ -22,4 +22,12 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('konsumen', [App\Http\Controllers\KonsumenController::class, 'index'])->name('konsumen.index');
+
+    Route::get('paket', [App\Http\Controllers\PaketController::class, 'index'])->name('paket.index');
+
+    Route::get('transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi.index');
+
+    Route::get('laporan', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');
 });
