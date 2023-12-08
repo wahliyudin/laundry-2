@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center gap-2">
-    <a href="{{ route('transaksi.show', $transaksi->getKey()) }}" class="btn btn-tertiary text-white btn-sm">
+    {{-- <a href="{{ route('transaksi.show', $transaksi->getKey()) }}" class="btn btn-tertiary text-white btn-sm">
         <div class="d-flex align-items-center gap-2">
             <svg class="icon icon-xs" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -10,7 +10,7 @@
             </svg>
             <span>Show</span>
         </div>
-    </a>
+    </a> --}}
     @if ($transaksi->status_bayar == \App\Enums\StatusBayar::LUNAS)
         <a href="{{ route('transaksi.print-pdf', $transaksi->getKey()) }}" target="_blank" class="btn btn-info btn-sm">
             <div class="d-flex align-items-center gap-2">

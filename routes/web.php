@@ -49,4 +49,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('transaksi/{transaksi}/print-pdf', [App\Http\Controllers\TransaksiController::class, 'printPdf'])->name('transaksi.print-pdf');
 
     Route::get('laporan', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');
+    Route::post('laporan/datatable', [App\Http\Controllers\LaporanController::class, 'datatable'])->name('laporan.datatable');
+    Route::get('laporan/print-pdf', [App\Http\Controllers\LaporanController::class, 'printPdf'])->name('laporan.print-pdf');
 });
