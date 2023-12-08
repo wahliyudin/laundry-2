@@ -31,6 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('konsumen/store', [App\Http\Controllers\KonsumenController::class, 'store'])->name('konsumen.store');
 
     Route::get('paket', [App\Http\Controllers\PaketController::class, 'index'])->name('paket.index');
+    Route::post('paket/datatable', [App\Http\Controllers\PaketController::class, 'datatable'])->name('paket.datatable');
+    Route::delete('paket/{paket}/destroy', [App\Http\Controllers\PaketController::class, 'destroy'])->name('paket.destroy');
+    Route::post('paket/{paket}/edit', [App\Http\Controllers\PaketController::class, 'edit'])->name('paket.edit');
+    Route::get('paket/next-kode', [App\Http\Controllers\PaketController::class, 'nextKode'])->name('paket.next-kode');
+    Route::post('paket/store', [App\Http\Controllers\PaketController::class, 'store'])->name('paket.store');
 
     Route::get('transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi.index');
 

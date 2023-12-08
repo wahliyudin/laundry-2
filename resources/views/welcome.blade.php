@@ -516,6 +516,7 @@
                             <table class="table align-middle table-row-dashed fs-6 gy-5" id="paket-table">
                                 <thead>
                                     <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
+                                        <th>Kode Paket</th>
                                         <th>Nama Paket</th>
                                         <th>Harga</th>
                                     </tr>
@@ -1201,8 +1202,12 @@
                     url: "/datatable-paket",
                 },
                 columns: [{
-                        name: 'nama_paket',
-                        data: 'nama_paket',
+                        name: 'kode',
+                        data: 'kode',
+                    },
+                    {
+                        name: 'nama',
+                        data: 'nama',
                     },
                     {
                         name: 'harga',
