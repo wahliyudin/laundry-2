@@ -38,6 +38,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('paket/store', [App\Http\Controllers\PaketController::class, 'store'])->name('paket.store');
 
     Route::get('transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::post('transaksi/datatable', [App\Http\Controllers\TransaksiController::class, 'datatable'])->name('transaksi.datatable');
+    Route::delete('transaksi/{transaksi}/destroy', [App\Http\Controllers\TransaksiController::class, 'destroy'])->name('transaksi.destroy');
+    Route::post('transaksi/{transaksi}/edit', [App\Http\Controllers\TransaksiController::class, 'edit'])->name('transaksi.edit');
+    Route::get('transaksi/{transaksi}/show', [App\Http\Controllers\TransaksiController::class, 'show'])->name('transaksi.show');
+    Route::get('transaksi/next-kode', [App\Http\Controllers\TransaksiController::class, 'nextKode'])->name('transaksi.next-kode');
+    Route::post('transaksi/store', [App\Http\Controllers\TransaksiController::class, 'store'])->name('transaksi.store');
+    Route::post('transaksi/update-status', [App\Http\Controllers\TransaksiController::class, 'updateStatus'])->name('transaksi.update-status');
+    Route::post('transaksi/bayar', [App\Http\Controllers\TransaksiController::class, 'bayar'])->name('transaksi.bayar');
+    Route::get('transaksi/{transaksi}/print-pdf', [App\Http\Controllers\TransaksiController::class, 'printPdf'])->name('transaksi.print-pdf');
 
     Route::get('laporan', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan.index');
 });

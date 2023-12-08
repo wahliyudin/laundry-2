@@ -27,6 +27,8 @@
         @yield('content')
     </main>
     @stack('modal')
+    <script src="{{ asset('assets/user/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>

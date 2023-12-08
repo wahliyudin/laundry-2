@@ -133,7 +133,6 @@
 @endpush
 
 @push('js')
-    <script src="{{ asset('assets/user/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/simple-datatables/dist/umd/simple-datatables.js') }}"></script>

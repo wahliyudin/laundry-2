@@ -29878,13 +29878,29 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 }
 
 [data-progress="on"]>.indicator-progress {
-            display: inline-block;
-        }
+    display: inline-block;
+}
 
-        .indicator-progress {
-            display: none;
-        }
+.indicator-progress {
+    display: none;
+}
 
-        [data-progress="on"]>.indicator-label {
-            display: none;
-        }
+[data-progress="on"]>.indicator-label {
+    display: none;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 35px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 35px !important;
+}
+
+.select2-container .select2-selection--single {
+    height: 35px !important;
+}

@@ -12,7 +12,7 @@ class Helper
             ->value();
     }
 
-    public function formatRupiah($val, $withPrefix = false)
+    public static function formatRupiah($val, $withPrefix = false)
     {
         $result = number_format($val, 0, ',', '.');
         return $withPrefix ? "Rp. $result" : $result;
