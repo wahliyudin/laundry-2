@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 Route::post('/datatable-paket', [App\Http\Controllers\WelcomeController::class, 'datatablePaket'])->name('datatable-paket');
 Route::get('/services-detail', [App\Http\Controllers\WelcomeController::class, 'servicesDetail'])->name('services-detail');
+Route::get('/check-laundry', [App\Http\Controllers\WelcomeController::class, 'checkLaundry'])->name('check-laundry');
 
 Auth::routes();
 

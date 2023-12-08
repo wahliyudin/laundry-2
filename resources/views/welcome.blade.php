@@ -104,10 +104,10 @@
                 <nav class="navbar">
                     <ul class="navbar-links">
                         <li class="navbar-dropdown has-children">
-                            <a href="{{ route('home') }}">Home</a>
+                            <a href="{{ route('welcome') }}">Welcome</a>
                         </li>
                         <li class="navbar-dropdown">
-                            <a href="about.html">Check Laundry</a>
+                            <a href="{{ route('check-laundry') }}">Check Laundry</a>
                         </li>
                     </ul>
                 </nav>
@@ -441,65 +441,6 @@
             <img src="{{ asset('assets/user/img/line.png') }}" class="works-line" alt="line"
                 data-aos="fade-right" data-aos-delay="700" data-aos-duration="1500">
         </div>
-        </div>
-    </section>
-    <section class="gap">
-        <div class="container">
-            <div class="new-laundry">
-                <div>
-                    <div class="heading two">
-                        <p>New Laundry Service Near You</p>
-                        <h3>A Gentle Solution for The Environment, and For Your Wallet</h3>
-                    </div>
-                    <form class="city-zip">
-                        <label>24-hour self-serve automated laundry service - open round the clock!</label>
-                        <div class="d-sm-flex">
-                            <input placeholder="City and Zip Code" type="text" name="City and Zip Code">
-                            <button class="sec-btn">find</button>
-                        </div>
-                    </form>
-                    <div class="d-flex align-items-center">
-                        <img src="{{ asset('assets/user/img/chake.png') }}" alt="img">
-                        <h6>Highest quality and lowest price guaranteed.</h6>
-                    </div>
-                </div>
-                <div class="new-laundry-img">
-                    <img alt="img" src="{{ asset('assets/user/img/new-laundry.jpg') }}">
-                    <a data-fancybox="" href="https://www.youtube.com/watch?v=xKxrkht7CpY">
-                        <i>
-                            <svg width="11" height="17" viewBox="0 0 11 17" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11 8.49951L0.5 0.27227L0.5 16.7268L11 8.49951Z" fill="white"></path>
-                            </svg>
-                        </i>
-                    </a>
-                </div>
-            </div>
-            <div class="count-style">
-                <div class="count-text">
-                    <div class="d-flex justify-content-center">
-                        <h2 class="count" data-number="12"></h2>
-                        <span>M</span>
-                    </div>
-                    <h3 class="text">Garments laundered last year</h3>
-                </div>
-                <div class="boder"></div>
-                <div class="count-text">
-                    <div class="d-flex justify-content-center">
-                        <h2 class="count" data-number="850"></h2>
-                        <span>K</span>
-                    </div>
-                    <h3 class="text">Garments in circulation</h3>
-                </div>
-                <div class="boder"></div>
-                <div class="count-text mb-0">
-                    <div class="d-flex justify-content-center">
-                        <h2 class="count" data-number="99"></h2>
-                        <span>%</span>
-                    </div>
-                    <h3 class="text">Customer satisfaction with products</h3>
-                </div>
-            </div>
         </div>
     </section>
     <section class="price-package gap" style="background-image:url(assets/user/img/price-package.png)">

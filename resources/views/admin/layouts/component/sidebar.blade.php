@@ -31,7 +31,7 @@
         </div>
         <ul class="nav flex-column pt-3 pt-md-0">
             <li class="nav-item">
-                <a href="https://demo.themesberg.com/volt-pro/index.html" class="nav-link d-flex align-items-center">
+                <a href="{{ route('welcome') }}" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
                         <img src="https://demo.themesberg.com/volt-pro/assets/img/brand/light.svg" height="20"
                             width="20" alt="Volt Logo">
